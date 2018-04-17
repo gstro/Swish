@@ -7,9 +7,9 @@ public struct APIClient {
   fileprivate let deserializer: Deserializer
   fileprivate let scheduler: Scheduler
 
-  public init(requestPerformer: RequestPerformer = NetworkRequestPerformer(), deserializer: Deserializer = JSONDeserializer(), scheduler: @escaping Scheduler = mainQueueScheduler) {
+  public init(requestPerformer: RequestPerformer = NetworkRequestPerformer(), deserializer: Deserializer? = nil, scheduler: @escaping Scheduler = mainQueueScheduler) {
     self.requestPerformer = requestPerformer
-    self.deserializer = deserializer
+    self.deserializer = deserializer ?? JSONDeserializer()
     self.scheduler = scheduler
   }
 }
